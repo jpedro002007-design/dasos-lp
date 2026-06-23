@@ -290,66 +290,26 @@
 
     /* ===== CASES ===== */
     .cases { background: var(--surface-1); }
-    .cases-header { margin-bottom: var(--sp-8); }
+    .cases-header { margin-bottom: var(--sp-8); text-align: center; }
 
-    .case-card {
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .client-card {
       background: var(--surface-0);
       border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      margin-bottom: 24px;
-      transition: box-shadow var(--ease-slow);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-5) var(--sp-6);
+      display: flex; flex-direction: column; gap: 6px;
     }
-    .case-card:hover { box-shadow: var(--shadow-md); }
-
-    .case-card-inner {
-      display: block;
-    }
-
-    .case-content { padding: var(--sp-7); display: flex; flex-direction: column; justify-content: center; }
-    .case-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: var(--brand-pale); color: var(--brand);
-      font-size: var(--text-xs); font-weight: 600; letter-spacing: .04em;
-      text-transform: uppercase; padding: 5px 10px; border-radius: 99px;
-      border: 1px solid rgba(10,50,70,.1);
-      margin-bottom: var(--sp-4); align-self: flex-start;
-    }
-    .case-content h3 {
+    .client-name {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: clamp(22px, 3vw, 30px); font-weight: 700;
-      line-height: 1.2; color: var(--text-1); margin-bottom: var(--sp-4);
+      font-size: var(--text-base); font-weight: 600; color: var(--text-1);
     }
-    .case-content p { font-size: var(--text-base); color: var(--text-3); line-height: 1.7; margin-bottom: var(--sp-5); }
-
-    .case-metrics {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
-      padding-top: var(--sp-5); border-top: 1px solid var(--border);
-    }
-    .metric-value {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: var(--text-xl); font-weight: 700; color: var(--brand);
-    }
-    .metric-label { font-size: var(--text-xs); color: var(--text-4); margin-top: 2px; }
-
-    .case-visual {
-      background: var(--brand);
-      display: flex; align-items: center; justify-content: center;
-      padding: var(--sp-7); min-height: 320px;
-    }
-    .case-visual-light {
-      background: var(--brand-pale);
-    }
-    .case-icon-large {
-      font-size: 96px; opacity: .25;
-    }
-    .case-visual-content { text-align: center; }
-    .case-visual-number {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 80px; font-weight: 800; color: rgba(255,255,255,.15); line-height: 1;
-    }
-    .case-visual-label {
-      font-size: var(--text-sm); color: rgba(255,255,255,.6); margin-top: 8px; text-transform: uppercase; letter-spacing: .08em;
+    .client-scope {
+      font-size: var(--text-sm); color: var(--text-4);
     }
 
     /* ===== LISTA DE ESCOLAS ===== */
@@ -523,7 +483,6 @@
         </div>
         <div class="nav-links">
           <a href="#servicos">Serviços</a>
-          <a href="#cases">Portfólio</a>
           <a href="#contato">Contato</a>
         </div>
         <a href="#contato" class="nav-cta">Fale conosco</a>
@@ -588,7 +547,7 @@
         <div class="service-card">
           <div class="service-icon">🏗️</div>
           <h3>Projetos Executivos BIM</h3>
-          <p>Projetos multidisciplinares completos em metodologia BIM: arquitetura, estrutura, instalações elétricas, hidrossanitárias, SPDA e combate a incêndio.</p>
+          <p>Modelo 3D multidisciplinar em LOD-350 com quantitativos extraídos do próprio modelo — o TCU não questiona sobrepreço em orçamento rastreável. Você recebe pranchas, memoriais, planilhas e atestado de capacidade técnica pronto pra habilitação.</p>
           <div class="service-tags">
             <span class="tag">LOD 350</span>
             <span class="tag">Multidisciplinar</span>
@@ -598,7 +557,7 @@
         <div class="service-card">
           <div class="service-icon">📷</div>
           <h3>Projeto de CFTV</h3>
-          <p>Projeto executivo completo de sistemas de videomonitoramento — câmeras HD/4K, PTZ, ONVIF, NVR, VMS, Video Wall, análise de vídeo inteligente com cabeamento estruturado em BIM.</p>
+          <p>Sistema especificado errado — câmera incompatível com NVR, cabeamento subdimensionado, cobertura com ponto cego — gera aditivo ou rescisão. Entregamos o projeto executivo completo em BIM: câmeras, cabeamento, NVR, VMS e Video Wall com todas as compatibilizações feitas.</p>
           <div class="service-tags">
             <span class="tag">BIM LOD-350</span>
             <span class="tag">Análise Inteligente</span>
@@ -608,7 +567,7 @@
         <div class="service-card">
           <div class="service-icon">📐</div>
           <h3>Consultoria BIM</h3>
-          <p>Suporte técnico para órgãos públicos na definição de requisitos BIM em editais, revisão de projetos, coordenação de disciplinas e implantação do Decreto Federal 9.983/2019.</p>
+          <p>Edital sem requisito BIM bem definido atrai proposta de escritório que entrega DWG e chama de BIM. Ajudamos o órgão a blindar o edital com especificações técnicas que só quem tem capacidade real consegue cumprir — e que habilitam conforme o Decreto 9.983/2019.</p>
           <div class="service-tags">
             <span class="tag">Decreto 9.983</span>
             <span class="tag">Revisão técnica</span>
@@ -619,67 +578,6 @@
     </div>
   </section>
 
-  <!-- CASES -->
-  <section class="cases" id="cases">
-    <div class="container">
-      <div class="cases-header">
-        <div class="section-label">Portfólio</div>
-        <h2 class="section-title">Contratos entregues</h2>
-        <p class="section-sub">Atestados emitidos por órgãos públicos, disponíveis para comprovação em processos licitatórios.</p>
-      </div>
-
-      <!-- Case 1: FADEX -->
-      <div class="case-card">
-        <div class="case-card-inner">
-          <div class="case-content">
-            <div class="case-badge">Concluído · 2022</div>
-            <h3>Requalificação de Escolas Estaduais do Piauí — FADEX</h3>
-            <p>Elaboração de modelos e projetos executivos em BIM para requalificação de 150+ escolas da rede pública estadual do Piauí. Projetos arquitetônicos, estruturais, hidrossanitários, elétricos, SPDA, combate a incêndio, pavimentação e drenagem — 100% entregues e atestados.</p>
-            <div class="case-metrics">
-              <div>
-                <div class="metric-value">150+</div>
-                <div class="metric-label">Escolas</div>
-              </div>
-              <div>
-                <div class="metric-value">104.191</div>
-                <div class="metric-label">m² projetados</div>
-              </div>
-              <div>
-                <div class="metric-value">224</div>
-                <div class="metric-label">Municípios</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Case 2: TCE-PI -->
-      <div class="case-card">
-        <div class="case-card-inner reverse">
-          <div class="case-content">
-            <div class="case-badge">Contrato 38/2025 · TCE-PI</div>
-            <h3>Projeto Executivo de CFTV — Tribunal de Contas do Estado do Piauí</h3>
-            <p>Projeto executivo completo do sistema de CFTV em BIM LOD-350 para o Tribunal de Contas do Estado do Piauí — Edifício Sede, Anexos I, II, III e áreas externas. Câmeras HD/4K, PTZ, ONVIF, NVR, VMS, Video Wall e análise inteligente de vídeo. Contratado por <strong>inexigibilidade de licitação</strong>: o TCE-PI reconheceu formalmente a notória especialização da Dasos, tornando inviável a competição — nenhuma outra empresa reúne as mesmas condições técnicas para executar o serviço.</p>
-            <div class="case-metrics">
-              <div>
-                <div class="metric-value">R$ 67k</div>
-                <div class="metric-label">Valor do contrato</div>
-              </div>
-              <div>
-                <div class="metric-value">LOD-350</div>
-                <div class="metric-label">Nível de detalhe</div>
-              </div>
-              <div>
-                <div class="metric-value">4</div>
-                <div class="metric-label">Edificações</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
 
   <!-- POR QUE BIM -->
   <section class="why">
@@ -693,22 +591,22 @@
             <div class="why-point">
               <div class="why-point-icon">✓</div>
               <div>
-                <div class="why-point-title">Projetos sem conflito entre disciplinas</div>
-                <div class="why-point-text">O modelo 3D unificado detecta interferências entre estrutura, elétrica e hidráulica antes da obra — eliminando retrabalho.</div>
+                <div class="why-point-title">Conflito detectado no modelo, não na obra</div>
+                <div class="why-point-text">Quando a tubulação hidráulica bate na viga estrutural é no 3D que se descobre — não depois da laje concretada. Aditivo zero por incompatibilidade de projeto.</div>
               </div>
             </div>
             <div class="why-point">
               <div class="why-point-icon">✓</div>
               <div>
-                <div class="why-point-title">Quantitativos e orçamento precisos</div>
-                <div class="why-point-text">O BIM extrai quantitativos automaticamente do modelo, reduzindo erros de orçamento e surpresas na execução.</div>
+                <div class="why-point-title">Quantitativos rastreáveis que o TCU aceita</div>
+                <div class="why-point-text">Cada item do orçamento sai direto do modelo BIM com memória de cálculo vinculada. Auditoria não encontra sobrepreço porque o número tem origem documentada.</div>
               </div>
             </div>
             <div class="why-point">
               <div class="why-point-icon">✓</div>
               <div>
-                <div class="why-point-title">Atestados que habilitam em qualquer edital</div>
-                <div class="why-point-text">Projetos entregues em BIM geram atestados de capacidade técnica mais robustos para qualificação em licitações exigentes.</div>
+                <div class="why-point-title">Atestados que excluem a concorrência convencional</div>
+                <div class="why-point-text">Editais com exigência de LOD-350 e compatibilização multidisciplinar em BIM eliminam automaticamente escritórios que entregam DWG com outro nome. Quem tem o atestado real compete em campo vazio.</div>
               </div>
             </div>
           </div>
@@ -735,8 +633,8 @@
       <div class="contact-inner">
         <div class="contact-info">
           <div class="section-label">Contato</div>
-          <h2>Vamos conversar sobre seu projeto?</h2>
-          <p>Envie os detalhes do seu edital ou necessidade técnica. Nossa equipe analisa e responde com proposta técnica e comercial.</p>
+          <h2>Mande o edital. A gente faz a análise.</h2>
+          <p>Descreva o escopo em 2 linhas ou cole o número do processo. Retornamos com análise técnica e viabilidade em até 24h úteis — sem compromisso.</p>
           <div class="contact-details">
             <div class="contact-item">
               <div class="contact-item-icon">✉️</div>
