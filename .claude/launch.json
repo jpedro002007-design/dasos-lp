@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dasos-lp",
+      "runtimeExecutable": "/opt/homebrew/bin/python3.13",
+      "runtimeArgs": ["-c", "import os,http.server; os.chdir('/Users/joaopedroduarte/Desktop/dasos-lp'); port=int(os.environ.get('PORT',4242)); http.server.test(HandlerClass=http.server.SimpleHTTPRequestHandler,port=port,bind='127.0.0.1')"],
+      "port": 4242,
+      "autoPort": true
+    }
+  ]
+}

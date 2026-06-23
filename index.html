@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Dasos — Projetos e Consultoria em BIM</title>
+  <meta name="description" content="Escritório especializado em projetos executivos BIM. 150+ escolas projetadas, 104.191 m² entregues, atestados para habilitação em licitações públicas." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Dasos Consultoria" />
+  <link rel="canonical" href="https://www.dasosconsultoria.com/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.dasosconsultoria.com/" />
+  <meta property="og:title" content="Dasos — Projetos e Consultoria em BIM" />
+  <meta property="og:description" content="Escritório especializado em projetos executivos BIM. 150+ escolas projetadas, 104.191 m² entregues, atestados para habilitação em licitações públicas." />
+  <meta property="og:image" content="images/logo-og.png" />
+  <meta property="og:locale" content="pt_BR" />
+
+  <meta name="theme-color" content="#FAFAF9" />
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="images/favicon-192.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    img { max-width: 100%; height: auto; }
+
+    :root {
+      /* Cores Dasos */
+      --brand:          #0A3246;
+      --brand-mid:      #124460;
+      --brand-light:    #1A5C80;
+      --brand-pale:     #EBF3F8;
+      --silver:         #B4BEBE;
+
+      /* Superfícies */
+      --surface-0:      #FFFFFF;
+      --surface-1:      #FAFAF9;
+      --surface-2:      #F3F3F1;
+      --surface-3:      #EDEDEB;
+
+      /* Bordas */
+      --border:         #E2E2DE;
+      --border-soft:    #D0D0CC;
+
+      /* Texto */
+      --text-1:         #111111;
+      --text-2:         #404040;
+      --text-3:         #6B6B6B;
+      --text-4:         #9A9A9A;
+
+      /* Espaçamento */
+      --sp-1:  4px;   --sp-2:  8px;   --sp-3:  12px;
+      --sp-4:  16px;  --sp-5:  24px;  --sp-6:  32px;
+      --sp-7:  48px;  --sp-8:  64px;  --sp-9:  96px;
+
+      /* Tipografia */
+      --text-xs:   11px;  --text-sm:   13px;  --text-base: 15px;
+      --text-md:   17px;  --text-lg:   20px;  --text-xl:   24px;
+      --text-2xl:  32px;  --text-3xl:  48px;  --text-4xl:  60px;
+
+      /* Radius */
+      --radius-sm:   8px;   --radius-md:  12px;
+      --radius-lg:   20px;  --radius-xl:  32px;
+
+      /* Sombras */
+      --shadow-sm:  0 1px 3px rgba(0,0,0,.06);
+      --shadow-md:  0 4px 16px rgba(0,0,0,.08);
+      --shadow-lg:  0 12px 40px rgba(0,0,0,.12);
+
+      --ease-base: 200ms ease;
+      --ease-slow: 300ms ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body::after {
+      content: '';
+      position: fixed; inset: 0; z-index: 9999;
+      pointer-events: none; opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      background: #FAFAF9;
+      color: var(--text-1);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed; top: max(20px, env(safe-area-inset-top, 20px));
+      left: 0; right: 0; z-index: 100; pointer-events: none;
+    }
+    .nav-pill {
+      pointer-events: all;
+      max-width: 820px; margin: 0 auto;
+      padding: 0 8px; height: 52px;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(16px);
+      border-radius: 99px;
+      border: 1px solid rgba(0,0,0,.08);
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+    .nav-logo { display: flex; align-items: center; padding: 0 8px; }
+    .nav-logo img { height: 28px; width: auto; }
+    .nav-links { display: flex; gap: 4px; }
+    .nav-links a {
+      font-size: var(--text-sm); font-weight: 500; color: var(--text-2);
+      text-decoration: none; padding: 8px 12px; border-radius: 99px;
+      transition: background var(--ease-base), color var(--ease-base);
+    }
+    .nav-links a:hover { background: var(--surface-2); color: var(--text-1); }
+    .nav-cta {
+      background: var(--brand); color: #fff;
+      font-size: var(--text-sm); font-weight: 600;
+      text-decoration: none; padding: 10px 18px; border-radius: 99px;
+      transition: background var(--ease-base);
+    }
+    .nav-cta:hover { background: var(--brand-mid); }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 120px 0 80px;
+      background: var(--surface-1);
+    }
+    .hero-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--brand-pale); color: var(--brand);
+      font-size: var(--text-xs); font-weight: 600; letter-spacing: .04em;
+      text-transform: uppercase; padding: 6px 12px; border-radius: 99px;
+      border: 1px solid rgba(10,50,70,.12);
+      margin-bottom: var(--sp-5);
+      animation: fadeUp 0.6s both 0.05s;
+    }
+    .hero h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 700; line-height: 1.1;
+      letter-spacing: -.02em; color: var(--text-1);
+      margin-bottom: var(--sp-5);
+      animation: fadeUp 0.65s both 0.12s;
+    }
+    .hero h1 em {
+      font-style: normal; color: var(--brand);
+    }
+    .hero-sub {
+      font-size: var(--text-md); color: var(--text-3);
+      line-height: 1.7; max-width: 520px;
+      margin-bottom: var(--sp-6);
+      animation: fadeUp 0.65s both 0.22s;
+    }
+    .hero-actions {
+      display: flex; gap: 12px; flex-wrap: wrap;
+      animation: fadeUp 0.65s both 0.32s;
+    }
+    .btn-primary {
+      background: var(--brand); color: #fff;
+      font-size: var(--text-base); font-weight: 600;
+      text-decoration: none; padding: 14px 24px; border-radius: var(--radius-lg);
+      transition: background var(--ease-base), transform var(--ease-base);
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { background: var(--brand-mid); transform: translateY(-1px); }
+    .btn-secondary {
+      background: var(--surface-0); color: var(--text-1);
+      font-size: var(--text-base); font-weight: 500;
+      text-decoration: none; padding: 14px 24px; border-radius: var(--radius-lg);
+      border: 1px solid var(--border); transition: border-color var(--ease-base), transform var(--ease-base);
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-secondary:hover { border-color: var(--border-soft); transform: translateY(-1px); }
+
+    .hero-stats {
+      display: flex; gap: var(--sp-6); margin-top: var(--sp-6);
+      padding-top: var(--sp-6); border-top: 1px solid var(--border);
+      animation: fadeUp 0.65s both 0.40s;
+    }
+    .stat-item {}
+    .stat-value {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: var(--text-2xl); font-weight: 700;
+      color: var(--brand); line-height: 1;
+    }
+    .stat-label {
+      font-size: var(--text-xs); color: var(--text-4);
+      text-transform: uppercase; letter-spacing: .05em; margin-top: 4px;
+    }
+
+    .hero-visual {
+      animation: fadeUp 0.80s both 0.50s;
+      position: relative;
+    }
+    .hero-map-card {
+      background: var(--surface-0);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .hero-map-card iframe {
+      display: block; width: 100%; height: 380px; border: none;
+    }
+    .hero-map-label {
+      padding: 16px 20px; display: flex; align-items: center; gap: 10px;
+      border-top: 1px solid var(--border);
+    }
+    .map-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand); flex-shrink: 0; }
+    .map-label-text { font-size: var(--text-sm); color: var(--text-3); }
+    .map-label-text strong { color: var(--text-1); }
+
+    /* ===== SEÇÃO GENÉRICA ===== */
+    section { padding: var(--sp-9) 0; }
+
+    .section-label {
+      font-size: var(--text-xs); font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--brand);
+      margin-bottom: var(--sp-3);
+    }
+    .section-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(28px, 4vw, 42px); font-weight: 700;
+      letter-spacing: -.02em; line-height: 1.15;
+      color: var(--text-1); margin-bottom: var(--sp-4);
+    }
+    .section-sub {
+      font-size: var(--text-md); color: var(--text-3);
+      line-height: 1.7; max-width: 560px;
+    }
+
+    /* ===== SERVIÇOS ===== */
+    .services { background: var(--surface-0); }
+    .services-header { text-align: center; margin-bottom: var(--sp-8); }
+    .services-header .section-sub { margin: 0 auto; }
+
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .service-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-6);
+      transition: border-color var(--ease-slow), box-shadow var(--ease-slow), transform var(--ease-slow);
+    }
+    .service-card:hover {
+      border-color: rgba(10,50,70,.2);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    .service-icon {
+      width: 44px; height: 44px;
+      background: var(--brand-pale); border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: var(--sp-4);
+      font-size: 22px;
+    }
+    .service-card h3 {
+      font-size: var(--text-lg); font-weight: 700;
+      color: var(--text-1); margin-bottom: var(--sp-3);
+    }
+    .service-card p { font-size: var(--text-base); color: var(--text-3); line-height: 1.65; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: var(--sp-4); }
+    .tag {
+      font-size: var(--text-xs); font-weight: 500; color: var(--brand);
+      background: var(--brand-pale); padding: 4px 10px; border-radius: 99px;
+    }
+
+    /* ===== CASES ===== */
+    .cases { background: var(--surface-1); }
+    .cases-header { margin-bottom: var(--sp-8); }
+
+    .case-card {
+      background: var(--surface-0);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      margin-bottom: 24px;
+      transition: box-shadow var(--ease-slow);
+    }
+    .case-card:hover { box-shadow: var(--shadow-md); }
+
+    .case-card-inner {
+      display: block;
+    }
+
+    .case-content { padding: var(--sp-7); display: flex; flex-direction: column; justify-content: center; }
+    .case-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--brand-pale); color: var(--brand);
+      font-size: var(--text-xs); font-weight: 600; letter-spacing: .04em;
+      text-transform: uppercase; padding: 5px 10px; border-radius: 99px;
+      border: 1px solid rgba(10,50,70,.1);
+      margin-bottom: var(--sp-4); align-self: flex-start;
+    }
+    .case-content h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(22px, 3vw, 30px); font-weight: 700;
+      line-height: 1.2; color: var(--text-1); margin-bottom: var(--sp-4);
+    }
+    .case-content p { font-size: var(--text-base); color: var(--text-3); line-height: 1.7; margin-bottom: var(--sp-5); }
+
+    .case-metrics {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+      padding-top: var(--sp-5); border-top: 1px solid var(--border);
+    }
+    .metric-value {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: var(--text-xl); font-weight: 700; color: var(--brand);
+    }
+    .metric-label { font-size: var(--text-xs); color: var(--text-4); margin-top: 2px; }
+
+    .case-visual {
+      background: var(--brand);
+      display: flex; align-items: center; justify-content: center;
+      padding: var(--sp-7); min-height: 320px;
+    }
+    .case-visual-light {
+      background: var(--brand-pale);
+    }
+    .case-icon-large {
+      font-size: 96px; opacity: .25;
+    }
+    .case-visual-content { text-align: center; }
+    .case-visual-number {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 80px; font-weight: 800; color: rgba(255,255,255,.15); line-height: 1;
+    }
+    .case-visual-label {
+      font-size: var(--text-sm); color: rgba(255,255,255,.6); margin-top: 8px; text-transform: uppercase; letter-spacing: .08em;
+    }
+
+    /* ===== LISTA DE ESCOLAS ===== */
+    .schools { background: var(--surface-0); }
+    .schools-header { margin-bottom: var(--sp-7); }
+    .schools-scroll {
+      height: 320px; overflow-y: auto;
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: var(--sp-5);
+      background: var(--surface-1);
+      columns: 3; column-gap: 24px;
+    }
+    .schools-scroll::-webkit-scrollbar { width: 6px; }
+    .schools-scroll::-webkit-scrollbar-track { background: transparent; }
+    .schools-scroll::-webkit-scrollbar-thumb { background: var(--border-soft); border-radius: 99px; }
+    .school-item {
+      font-size: var(--text-xs); color: var(--text-3);
+      padding: 3px 0; break-inside: avoid;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3px;
+    }
+    .schools-etapa {
+      font-size: var(--text-xs); font-weight: 700; color: var(--brand);
+      text-transform: uppercase; letter-spacing: .06em;
+      padding: 8px 0 4px; break-inside: avoid; margin-top: 4px;
+    }
+    .schools-count {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--brand-pale); color: var(--brand);
+      font-size: var(--text-sm); font-weight: 600;
+      padding: 6px 14px; border-radius: 99px;
+      border: 1px solid rgba(10,50,70,.1);
+      margin-top: var(--sp-4);
+    }
+
+    /* ===== POR QUE BIM ===== */
+    .why { background: var(--brand); color: #fff; }
+    .why .section-label { color: rgba(255,255,255,.5); }
+    .why .section-title { color: #fff; }
+    .why .section-sub { color: rgba(255,255,255,.7); }
+
+    .why-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .why-points { display: flex; flex-direction: column; gap: 28px; margin-top: var(--sp-7); }
+    .why-point { display: flex; gap: 16px; }
+    .why-point-icon {
+      width: 36px; height: 36px; border-radius: var(--radius-sm);
+      background: rgba(255,255,255,.1); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 18px;
+    }
+    .why-point-title { font-size: var(--text-base); font-weight: 600; color: #fff; margin-bottom: 4px; }
+    .why-point-text { font-size: var(--text-sm); color: rgba(255,255,255,.65); line-height: 1.6; }
+
+    .why-decree {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius-xl); padding: var(--sp-6);
+    }
+    .decree-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: var(--text-xl); font-weight: 700; color: #fff; margin-bottom: var(--sp-3);
+    }
+    .decree-text { font-size: var(--text-base); color: rgba(255,255,255,.7); line-height: 1.7; margin-bottom: var(--sp-5); }
+    .decree-items { display: flex; flex-direction: column; gap: 12px; }
+    .decree-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: var(--text-sm); color: rgba(255,255,255,.8);
+    }
+    .decree-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--silver); flex-shrink: 0; }
+
+    /* ===== CONTATO ===== */
+    .contact { background: var(--surface-1); }
+    .contact-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+    }
+    .contact-info { padding-top: var(--sp-3); }
+    .contact-info h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(28px, 4vw, 40px); font-weight: 700;
+      line-height: 1.2; margin-bottom: var(--sp-4);
+    }
+    .contact-info p { font-size: var(--text-base); color: var(--text-3); line-height: 1.7; margin-bottom: var(--sp-6); }
+    .contact-details { display: flex; flex-direction: column; gap: 16px; }
+    .contact-item { display: flex; gap: 12px; align-items: flex-start; }
+    .contact-item-icon {
+      width: 36px; height: 36px; flex-shrink: 0;
+      background: var(--brand-pale); border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center; font-size: 16px;
+    }
+    .contact-item-label { font-size: var(--text-xs); color: var(--text-4); text-transform: uppercase; letter-spacing: .05em; }
+    .contact-item-value { font-size: var(--text-base); color: var(--text-1); font-weight: 500; margin-top: 1px; }
+
+    .contact-form {
+      background: var(--surface-0); border: 1px solid var(--border);
+      border-radius: var(--radius-xl); padding: var(--sp-7);
+    }
+    .form-title { font-size: var(--text-lg); font-weight: 700; margin-bottom: var(--sp-5); }
+    .form-group { margin-bottom: var(--sp-4); }
+    .form-group label {
+      display: block; font-size: var(--text-sm); font-weight: 500;
+      color: var(--text-2); margin-bottom: 6px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; padding: 12px 14px;
+      background: var(--surface-1); border: 1px solid var(--border);
+      border-radius: var(--radius-md); font-size: var(--text-base);
+      font-family: inherit; color: var(--text-1);
+      transition: border-color var(--ease-base);
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--brand); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit {
+      width: 100%; background: var(--brand); color: #fff;
+      font-size: var(--text-base); font-weight: 600;
+      padding: 14px; border-radius: var(--radius-lg);
+      border: none; cursor: pointer;
+      transition: background var(--ease-base), transform var(--ease-base);
+      font-family: inherit;
+    }
+    .form-submit:hover { background: var(--brand-mid); transform: translateY(-1px); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--brand); color: rgba(255,255,255,.7);
+      padding: var(--sp-7) 0;
+    }
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+    }
+    .footer-logo img { height: 28px; }
+    .footer-info { font-size: var(--text-sm); }
+    .footer-info a { color: rgba(255,255,255,.5); text-decoration: none; }
+    .footer-cnpj { font-size: var(--text-xs); color: rgba(255,255,255,.35); margin-top: 4px; }
+
+    /* ===== RESPONSIVO ===== */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-visual { order: 1; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .case-card-inner { grid-template-columns: 1fr; }
+      .case-card-inner.reverse { direction: ltr; }
+      .case-visual { min-height: 200px; }
+      .why-inner { grid-template-columns: 1fr; gap: 48px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .case-metrics { grid-template-columns: 1fr 1fr; }
+      .team-grid { grid-template-columns: 1fr 1fr; }
+      .hero-stats { flex-wrap: wrap; gap: var(--sp-5); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container">
+      <div class="nav-pill">
+        <div class="nav-logo">
+          <img src="images/logo-azul.png" alt="Dasos" />
+        </div>
+        <div class="nav-links">
+          <a href="#servicos">Serviços</a>
+          <a href="#cases">Portfólio</a>
+          <a href="#contato">Contato</a>
+        </div>
+        <a href="#contato" class="nav-cta">Fale conosco</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <div class="hero-badge">Especialistas em BIM no Piauí</div>
+          <h1>Projetos executivos em <em>BIM</em> para setor público</h1>
+          <p class="hero-sub">Mais de 104 mil m² de projetos executivos entregues e atestados por órgãos públicos. Reconhecidos por notória especialização em BIM — contratados por inexigibilidade de licitação pelo TCE-PI.</p>
+          <div class="hero-actions">
+            <a href="#contato" class="btn-primary">Solicitar proposta</a>
+            <a href="#cases" class="btn-secondary">Ver portfólio</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-value">150+</div>
+              <div class="stat-label">Escolas projetadas</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">104k</div>
+              <div class="stat-label">m² entregues</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">224</div>
+              <div class="stat-label">Municípios atendidos</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-map-card">
+            <iframe
+              src="https://www.google.com/maps/d/embed?mid=1vnPasVd_xtMR6u5F8nFAS6qJokMFtZhl"
+              title="Mapa das escolas projetadas pela Dasos no Piauí"
+              loading="lazy"
+              allowfullscreen>
+            </iframe>
+            <div class="hero-map-label">
+              <div class="map-dot"></div>
+              <div class="map-label-text"><strong>150+ escolas</strong> projetadas em BIM — Piauí</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section class="services" id="servicos">
+    <div class="container">
+      <div class="services-header">
+        <div class="section-label">O que entregamos</div>
+        <h2 class="section-title">Projetos executivos completos</h2>
+        <p class="section-sub">Cada entrega inclui modelo BIM, pranchas técnicas, memoriais descritivos e quantitativos. Prontos para licitação, execução e fiscalização.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🏗️</div>
+          <h3>Projetos Executivos BIM</h3>
+          <p>Projetos multidisciplinares completos em metodologia BIM: arquitetura, estrutura, instalações elétricas, hidrossanitárias, SPDA e combate a incêndio.</p>
+          <div class="service-tags">
+            <span class="tag">LOD 350</span>
+            <span class="tag">Multidisciplinar</span>
+            <span class="tag">Orçamento BIM</span>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📷</div>
+          <h3>Projeto de CFTV</h3>
+          <p>Projeto executivo completo de sistemas de videomonitoramento — câmeras HD/4K, PTZ, ONVIF, NVR, VMS, Video Wall, análise de vídeo inteligente com cabeamento estruturado em BIM.</p>
+          <div class="service-tags">
+            <span class="tag">BIM LOD-350</span>
+            <span class="tag">Análise Inteligente</span>
+            <span class="tag">Cabeamento</span>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📐</div>
+          <h3>Consultoria BIM</h3>
+          <p>Suporte técnico para órgãos públicos na definição de requisitos BIM em editais, revisão de projetos, coordenação de disciplinas e implantação do Decreto Federal 9.983/2019.</p>
+          <div class="service-tags">
+            <span class="tag">Decreto 9.983</span>
+            <span class="tag">Revisão técnica</span>
+            <span class="tag">Treinamento</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASES -->
+  <section class="cases" id="cases">
+    <div class="container">
+      <div class="cases-header">
+        <div class="section-label">Portfólio</div>
+        <h2 class="section-title">Contratos entregues</h2>
+        <p class="section-sub">Atestados emitidos por órgãos públicos, disponíveis para comprovação em processos licitatórios.</p>
+      </div>
+
+      <!-- Case 1: FADEX -->
+      <div class="case-card">
+        <div class="case-card-inner">
+          <div class="case-content">
+            <div class="case-badge">Concluído · 2022</div>
+            <h3>Requalificação de Escolas Estaduais do Piauí — FADEX</h3>
+            <p>Elaboração de modelos e projetos executivos em BIM para requalificação de 150+ escolas da rede pública estadual do Piauí. Projetos arquitetônicos, estruturais, hidrossanitários, elétricos, SPDA, combate a incêndio, pavimentação e drenagem — 100% entregues e atestados.</p>
+            <div class="case-metrics">
+              <div>
+                <div class="metric-value">150+</div>
+                <div class="metric-label">Escolas</div>
+              </div>
+              <div>
+                <div class="metric-value">104.191</div>
+                <div class="metric-label">m² projetados</div>
+              </div>
+              <div>
+                <div class="metric-value">224</div>
+                <div class="metric-label">Municípios</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 2: TCE-PI -->
+      <div class="case-card">
+        <div class="case-card-inner reverse">
+          <div class="case-content">
+            <div class="case-badge">Contrato 38/2025 · TCE-PI</div>
+            <h3>Projeto Executivo de CFTV — Tribunal de Contas do Estado do Piauí</h3>
+            <p>Projeto executivo completo do sistema de CFTV em BIM LOD-350 para o Tribunal de Contas do Estado do Piauí — Edifício Sede, Anexos I, II, III e áreas externas. Câmeras HD/4K, PTZ, ONVIF, NVR, VMS, Video Wall e análise inteligente de vídeo. Contratado por <strong>inexigibilidade de licitação</strong>: o TCE-PI reconheceu formalmente a notória especialização da Dasos, tornando inviável a competição — nenhuma outra empresa reúne as mesmas condições técnicas para executar o serviço.</p>
+            <div class="case-metrics">
+              <div>
+                <div class="metric-value">R$ 67k</div>
+                <div class="metric-label">Valor do contrato</div>
+              </div>
+              <div>
+                <div class="metric-value">LOD-350</div>
+                <div class="metric-label">Nível de detalhe</div>
+              </div>
+              <div>
+                <div class="metric-value">4</div>
+                <div class="metric-label">Edificações</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- POR QUE BIM -->
+  <section class="why">
+    <div class="container">
+      <div class="why-inner">
+        <div>
+          <div class="section-label">Por que BIM</div>
+          <h2 class="section-title">A metodologia que o governo está adotando</h2>
+          <p class="section-sub">BIM não é apenas software — é um conjunto de processos que garante projetos mais precisos, rastreáveis e prontos para licitação.</p>
+          <div class="why-points">
+            <div class="why-point">
+              <div class="why-point-icon">✓</div>
+              <div>
+                <div class="why-point-title">Projetos sem conflito entre disciplinas</div>
+                <div class="why-point-text">O modelo 3D unificado detecta interferências entre estrutura, elétrica e hidráulica antes da obra — eliminando retrabalho.</div>
+              </div>
+            </div>
+            <div class="why-point">
+              <div class="why-point-icon">✓</div>
+              <div>
+                <div class="why-point-title">Quantitativos e orçamento precisos</div>
+                <div class="why-point-text">O BIM extrai quantitativos automaticamente do modelo, reduzindo erros de orçamento e surpresas na execução.</div>
+              </div>
+            </div>
+            <div class="why-point">
+              <div class="why-point-icon">✓</div>
+              <div>
+                <div class="why-point-title">Atestados que habilitam em qualquer edital</div>
+                <div class="why-point-text">Projetos entregues em BIM geram atestados de capacidade técnica mais robustos para qualificação em licitações exigentes.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="why-decree">
+            <div class="decree-title">Decreto Federal nº 9.983/2019</div>
+            <div class="decree-text">O governo federal determina a adoção progressiva e obrigatória de BIM nas contratações de obras e serviços de engenharia da Administração Pública. A Lei 14.133/2021 reforça a preferência pela metodologia em licitações.</div>
+            <div class="decree-items">
+              <div class="decree-item"><div class="decree-dot"></div>Obras federais — BIM obrigatório progressivamente</div>
+              <div class="decree-item"><div class="decree-dot"></div>Caixa Econômica já exige BIM em projetos MCMV</div>
+              <div class="decree-item"><div class="decree-dot"></div>Estados e municípios seguindo o modelo federal</div>
+              <div class="decree-item"><div class="decree-dot"></div>ABDI capacitando gestores públicos em todo o Brasil</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="contact" id="contato">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="contact-info">
+          <div class="section-label">Contato</div>
+          <h2>Vamos conversar sobre seu projeto?</h2>
+          <p>Envie os detalhes do seu edital ou necessidade técnica. Nossa equipe analisa e responde com proposta técnica e comercial.</p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-item-icon">✉️</div>
+              <div>
+                <div class="contact-item-label">E-mail</div>
+                <div class="contact-item-value">adm@dasosconsultoria.com</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">📱</div>
+              <div>
+                <div class="contact-item-label">Telefone / WhatsApp</div>
+                <div class="contact-item-value">(86) 99933-8020</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">📍</div>
+              <div>
+                <div class="contact-item-label">Endereço</div>
+                <div class="contact-item-value">Rua Des. Cromwell de Carvalho, 2265, Sala 4<br>São Cristóvão · Teresina-PI</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <div class="form-title">Solicitar proposta</div>
+          <form id="contact-form">
+
+            <div class="form-group">
+              <label>Nome completo</label>
+              <input type="text" name="nome" placeholder="Seu nome" required />
+            </div>
+            <div class="form-group">
+              <label>Órgão / Empresa</label>
+              <input type="text" name="orgao" placeholder="Nome do órgão ou empresa" required />
+            </div>
+            <div class="form-group">
+              <label>E-mail</label>
+              <input type="email" name="email" placeholder="seu@email.gov.br" required />
+            </div>
+            <div class="form-group">
+              <label>Tipo de projeto</label>
+              <select name="tipo">
+                <option value="">Selecione</option>
+                <option>Projeto executivo BIM (edificação)</option>
+                <option>Projeto de CFTV</option>
+                <option>Consultoria BIM</option>
+                <option>Outro</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Descrição do projeto</label>
+              <textarea name="descricao" placeholder="Descreva o escopo, número de edificações, área aproximada ou número do processo..."></textarea>
+            </div>
+            <button type="submit" class="form-submit">Enviar solicitação</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <img src="images/logo-branco.png" alt="Dasos" />
+        </div>
+        <div class="footer-info">
+          Dasos Consultoria Ltda · <a href="mailto:adm@dasosconsultoria.com">adm@dasosconsultoria.com</a>
+          <div class="footer-cnpj">CNPJ 40.194.381/0001-01 · Teresina-PI</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nome     = document.querySelector('[name="nome"]').value;
+      const orgao    = document.querySelector('[name="orgao"]').value;
+      const email    = document.querySelector('[name="email"]').value;
+      const tipo     = document.querySelector('[name="tipo"]').value;
+      const descricao = document.querySelector('[name="descricao"]').value;
+
+      const assunto = encodeURIComponent('Solicitação de proposta — Dasos');
+      const corpo = encodeURIComponent(
+        `Nome: ${nome}\nÓrgão / Empresa: ${orgao}\nE-mail de contato: ${email}\nTipo de projeto: ${tipo}\n\nDescrição:\n${descricao}`
+      );
+
+      window.location.href = `mailto:adm@dasosconsultoria.com?subject=${assunto}&body=${corpo}`;
+    });
+  </script>
+</body>
+</html>
