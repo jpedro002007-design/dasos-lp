@@ -360,8 +360,9 @@
     .contact-item-icon {
       width: 32px; height: 32px; flex-shrink: 0;
       background: var(--brand-pale); border-radius: var(--radius-sm);
-      display: flex; align-items: center; justify-content: center; font-size: 14px;
+      display: flex; align-items: center; justify-content: center;
     }
+    .contact-item-icon svg { width: 15px; height: 15px; stroke: var(--brand); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
     .contact-item-label { font-size: 11px; color: var(--text-4); text-transform: uppercase; letter-spacing: .07em; }
     .contact-item-value { font-size: 15px; color: var(--text-1); font-weight: 500; margin-top: 2px; }
 
@@ -430,9 +431,17 @@
       .nav-links { display: none; }
     }
 
+    @media (max-width: 900px) {
+      .hero {
+        background-image:
+          linear-gradient(rgba(10,50,70,.82), rgba(10,50,70,.82)),
+          url('images/hero.avif');
+      }
+    }
+
     @media (max-width: 600px) {
       .hero-stats { flex-wrap: wrap; }
-      .stat-item + .stat-item { border-left: none; border-top: 1px solid var(--border); padding-left: 0; padding-top: var(--sp-4); }
+      .stat-item + .stat-item { border-left: none; border-top: 1px solid rgba(255,255,255,.15); padding-left: 0; padding-top: var(--sp-4); }
       .contact-form { padding: 28px 20px; }
     }
   </style>
@@ -599,21 +608,27 @@
           <p>Manda o número do processo ou descreve o que precisa. A gente analisa e te retorna em até 24h úteis.</p>
           <div class="contact-details">
             <div class="contact-item">
-              <div class="contact-item-icon">✉️</div>
+              <div class="contact-item-icon">
+                <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+              </div>
               <div>
                 <div class="contact-item-label">E-mail</div>
                 <div class="contact-item-value">adm@dasosconsultoria.com</div>
               </div>
             </div>
             <div class="contact-item">
-              <div class="contact-item-icon">📱</div>
+              <div class="contact-item-icon">
+                <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.5 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.41 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.4a16 16 0 0 0 5.55 5.55l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.9z"/></svg>
+              </div>
               <div>
                 <div class="contact-item-label">Telefone / WhatsApp</div>
                 <div class="contact-item-value">(86) 99933-8020</div>
               </div>
             </div>
             <div class="contact-item">
-              <div class="contact-item-icon">📍</div>
+              <div class="contact-item-icon">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
               <div>
                 <div class="contact-item-label">Endereço</div>
                 <div class="contact-item-value">Rua Des. Cromwell de Carvalho, 2265, Sala 4<br>São Cristóvão · Teresina-PI</div>
